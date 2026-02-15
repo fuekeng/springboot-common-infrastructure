@@ -25,6 +25,7 @@ resource "aws_eks_addon" "example" {
 
 module "eks_managed_node_group" {
   source  = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
+  cluster_service_cidr = module.eks.cluster_service_cidr
   version = "~> 20.0" # Version compatible avec AWS Provider 5.x
 
   name            = "${var.project}-node"
