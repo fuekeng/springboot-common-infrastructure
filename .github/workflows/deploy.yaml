@@ -5,7 +5,7 @@ on:
       - main
     paths:
       - 'vpc/**'
-      - 'acm/**'
+      # - 'acm/**'   # ← désactivé temporairement
       - 'eks/**'
       - 'monitoring/**'
   pull_request:
@@ -13,7 +13,7 @@ on:
       - main
     paths:
       - 'vpc/**'
-      - 'acm/**'
+      # - 'acm/**'   # ← désactivé temporairement
       - 'eks/**'
       - 'monitoring/**'
 
@@ -39,8 +39,8 @@ jobs:
           filters: |
             vpc:
               - 'vpc/**'
-            acm:
-              - 'acm/**'
+            # acm:                # ← désactivé temporairement
+            #   - 'acm/**'
             eks:
               - 'eks/**'
             monitoring:
