@@ -1,2 +1,2 @@
 environment = "dev"
-instance_type ="t3.large"
+instance_type ="c7i-flex.large"
