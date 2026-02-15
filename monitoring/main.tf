@@ -4,7 +4,7 @@ resource "helm_release" "prometheus" {
   namespace  = "monitoring"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "prometheus"
- // version    = "15.2.1" # Ensure this matches the version you want
+ // version    = "15.2.1" # Ensure this matches the version you want!
   values = [templatefile("${var.environment}/values_prom.yaml", {
     DESTINATION_GMAIL_ID   = var.DESTINATION_GMAIL_ID
     SOURCE_AUTH_PASSWORD   = var.SOURCE_AUTH_PASSWORD
@@ -21,7 +21,7 @@ resource "helm_release" "grafana" {
   chart      = "grafana"
  // version    = "15.2.1" # Ensure this matches the version you want
   values = [
-    file("${var.environment}/values_grafana.yaml") # Path to your custom values file
+    file("${var.environment}/values_grafana.yaml") # Path to your custom values file!
   ]
   set {
     name  = "adminPassword"
