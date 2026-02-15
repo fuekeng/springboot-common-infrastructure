@@ -30,7 +30,7 @@ module "eks_managed_node_group" {
 
   name            = "${var.project}-node"
   cluster_name    = module.eks.cluster_name
-  cluster_version = "1.30"
+  cluster_version = "1.31"
 
   # Utilisation directe des sorties du module VPC (plus propre que les data sources)
     subnet_ids = data.aws_subnets.private_subnets.ids
