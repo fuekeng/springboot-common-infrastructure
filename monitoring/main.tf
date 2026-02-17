@@ -4,7 +4,7 @@ resource "helm_release" "prometheus" {
   namespace  = "monitoring"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "prometheus"
-  version    = "25.27.0" # Version stable actuelle de la stack Prometheus (v25.x)!
+  version    = "25.27.0" # Version stable actuelle de la stack Prometheus (v25.x)
   
   values = [templatefile("${var.environment}/values_prom.yaml", {
     DESTINATION_GMAIL_ID   = var.DESTINATION_GMAIL_ID

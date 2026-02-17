@@ -8,7 +8,7 @@ resource "aws_iam_role_policy_attachment" "alb_controller_policy_attachment" {
   policy_arn = aws_iam_policy.alb_controller_policy.arn
 }
 
-# Define the IAM policy document for the AssumeRole policy
+# Define the IAM policy document for the AssumeRole policy!
 data "aws_iam_policy_document" "alb_controller_assume_role_policy" {
   statement {
     actions   = ["sts:AssumeRoleWithWebIdentity"]
