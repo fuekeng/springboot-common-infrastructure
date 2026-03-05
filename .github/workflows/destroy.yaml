@@ -1,4 +1,4 @@
-name: EKS Terraform Deployment
+name: EKS Terraform Delete
 on:
   push:
     branches:
