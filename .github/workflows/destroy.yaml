@@ -1,21 +1,7 @@
-name: EKS Terraform Delete
+name: EKS Destroy Deployment
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'vpc/**'
-      #- 'acm/**'
-      - 'eks/**'
-      - 'monitoring/**'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'vpc/**'
-      #- 'acm/**'
-      - 'eks/**'
-      - 'monitoring/**'
+ workflow_dispatch:
+
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -52,10 +38,10 @@ jobs:
           terraform init -backend-config=dev/backend.tfvars
           terraform destroy --var-file=dev/terraform.tfvars --auto-approve=true
           cd ..
+          cd acm
+          terraform init -backend-config=dev/backend.tfvars
+          terraform destroy --var-file=dev/terraform.tfvars --auto-approve=true
+          cd ..
           cd vpc
           terraform init -backend-config=dev/backend.tfvars
           terraform destroy --var-file=dev/terraform.tfvars --auto-approve=true
-
-
-
-
