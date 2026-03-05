@@ -1,7 +1,21 @@
-name: EKS Destroy Deployment
+name: EKS Terraform Deployment
 on:
- workflow_dispatch:
-
+  push:
+    branches:
+      - main
+    paths:
+      - 'vpc/**'
+      #- 'acm/**'
+      - 'eks/**'
+      - 'monitoring/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'vpc/**'
+      #- 'acm/**'
+      - 'eks/**'
+      - 'monitoring/**'
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
