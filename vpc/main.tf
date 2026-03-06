@@ -1,6 +1,6 @@
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
-  version = "5.19.0" # Version stable compatible avec AWS Provider v5!
+  version = "5.19.0" # Version stable compatible avec AWS Provider v5
   name = "${var.project}-${var.environment}"
   cidr = "12.0.0.0/16"
 
