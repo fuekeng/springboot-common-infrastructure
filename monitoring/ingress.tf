@@ -23,7 +23,7 @@ resource "kubectl_manifest" "prometheus_ingress" {
         #host = "prometheus.${var.environment}.devops4solutions.com"
         http = {
           paths = [{
-            path     = "/prometheus"
+            path     = "/"
             pathType = "Prefix"
             backend = {
               service = {
@@ -65,7 +65,7 @@ resource "kubectl_manifest" "grafana_ingress" {
         #host = "grafana.${var.environment}.devops4solutions.com"
         http = {
           paths = [{
-            path     = "/grafana"
+            path     = "/"
             pathType = "Prefix"
             backend = {
               service = {
