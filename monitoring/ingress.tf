@@ -12,7 +12,7 @@ resource "kubectl_manifest" "prometheus_ingress" {
         "alb.ingress.kubernetes.io/healthcheck-path" = "/-/ready"
         "alb.ingress.kubernetes.io/load-balancer-name" = "${var.environment}-alb"
         # "alb.ingress.kubernetes.io/certificate-arn" = "${data.aws_acm_certificate.acm.arn}"
-        "alb.ingress.kubernetes.io/group.name": "myapp"
+        "alb.ingress.kubernetes.io/group.name"= "myapp"
         #"alb.ingress.kubernetes.io/ssl-redirect"       = "443"
        "alb.ingress.kubernetes.io/listen-ports" = "[{\"HTTP\":80}]"
       }
@@ -53,7 +53,7 @@ resource "kubectl_manifest" "grafana_ingress" {
         "alb.ingress.kubernetes.io/scheme"           = "internet-facing"
         "alb.ingress.kubernetes.io/target-type"      = "ip"
         "alb.ingress.kubernetes.io/healthcheck-path" = "/api/health"
-        "alb.ingress.kubernetes.io/group.name": "myapp"
+        "alb.ingress.kubernetes.io/group.name"= "myapp"
         #"alb.ingress.kubernetes.io/ssl-redirect" = "443"
         "alb.ingress.kubernetes.io/listen-ports" = "[{\"HTTP\":80}]"
         "alb.ingress.kubernetes.io/load-balancer-name" = "${var.environment}-alb"
