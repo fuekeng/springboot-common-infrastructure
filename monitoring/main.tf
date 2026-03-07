@@ -4,23 +4,13 @@ resource "helm_release" "prometheus" {
   namespace  = "monitoring"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "prometheus"
-  version    = "25.27.0"
-
+  version    = "25.27.0" # Version stable actuelle de la stack Prometheus (v25.x)
+  
   values = [templatefile("${var.environment}/values_prom.yaml", {
-    DESTINATION_GMAIL_ID = var.DESTINATION_GMAIL_ID
-    SOURCE_AUTH_PASSWORD = var.SOURCE_AUTH_PASSWORD
-    SOURCE_GMAIL_ID      = var.SOURCE_GMAIL_ID
+    DESTINATION_GMAIL_ID   = var.DESTINATION_GMAIL_ID
+    SOURCE_AUTH_PASSWORD   = var.SOURCE_AUTH_PASSWORD
+    SOURCE_GMAIL_ID        = var.SOURCE_GMAIL_ID
   })]
-
-  set {
-    name  = "server.prefixURL"
-    value = "/prometheus"
-  }
-
-  set {
-    name  = "server.baseURL"
-    value = "http://localhost/prometheus"
-  }
 }
 
 resource "helm_release" "grafana" {
@@ -29,24 +19,14 @@ resource "helm_release" "grafana" {
   namespace  = "monitoring"
   repository = "https://grafana.github.io/helm-charts"
   chart      = "grafana"
-  version    = "8.5.0"
-
+  version    = "8.5.0" # Version stable de Grafana (Chart v8.x) compatible Kubernetes 1.26+!
+  
   values = [
     file("${var.environment}/values_grafana.yaml")
   ]
-
   set {
     name  = "adminPassword"
     value = "admin"
   }
-
-  set {
-    name  = "grafana\\.ini.server.root_url"
-    value = "%(protocol)s://%(domain)s/grafana/"
-  }
-
-  set {
-    name  = "grafana\\.ini.server.serve_from_sub_path"
-    value = "true"
-  }
 }
+
